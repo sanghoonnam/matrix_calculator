@@ -49,6 +49,8 @@ const inverse = () => {
         }
     }
 
+    const wholeDet = detCalc(numMatrix);
+
     for(let i=0;i<val;i++){
         jaxMatrix[i] = ""
         for(let j=0;j<val;j++){
@@ -87,7 +89,6 @@ const detCalc = (arr) => {
     if(len>=3){
     let sum = 0;
     for(let i=0;i<len;i++){
-        let head = arr[0]
         let section;
         if(i === 0){
             section = arr.slice(1,len).map(j => j.slice(1,len));
@@ -108,5 +109,57 @@ const detCalc = (arr) => {
     }
     else if(len === 2){
         return arr[0][0]*arr[1][1]-arr[0][1]*arr[1][0]
+    }
+}
+
+const inverseCalc = (arr) => {
+    const matrix = new Array()
+    const len = arr[0].length
+    if(len>=3){
+    for(let i=0;i<len;i++){
+        for(let j=0;j<len;j++){
+        let section;
+        if(i === 0 && j===0){
+            section = arr.slice(1,len).map(m => m.slice(1,len));
+            
+        }
+        else if(i === 0 && j === len-1){
+            section = arr.slice(1,len).map(m => m.slice(0,len-1));
+        }
+        else if(i === 0){
+            section = arr.slice(1,len).map(m => [].concat(m.slice(0,j),m.slice(j+1,len)));
+        }
+        else if(i === len-1 && j === 0){
+            section = arr.slice(0,len-1).map(m => m.slice(1,len));
+        }
+        else if(i === len-1 && j === len-1){
+            section = arr.slice(0,len-1).map(m => m.slice(0,len-1));
+        }
+        else if(i === len-1){
+            section = arr.slice(0,len-1).map(m => [].concat(m.slice(0,j),m.slice(j+1,len)));
+        }
+        else if(i !== len-1 && i !== 0 && j === 0){
+            section = [].concat(arr.slice(0,i).map(m => m.slice(1,len)), arr.slice(i+1,len).map(m => m.slice(1,len)));
+        }
+        else if(i !== len-1 && i !== 0 && j === len-1){
+            section = arr.slice(1,len).map(j => j.slice(0,len-1));
+        }
+        else{
+            section = arr.slice(1,len).map(j => [].concat(j.slice(0,i),j.slice(i+1,len)))
+        }
+        matrix[i][j] = detCalc(section)*Math.pow(-1,i+j)
+    }
+    }
+    return matrix
+    }
+    else if(len === 1){
+        return arr[0][0]
+    }
+    else if(len === 2){
+        matrix[0][0] = arr[1][1]/detCalc(arr)
+        matrix[1][1] = arr[0][0]/detCalc(arr)
+        matrix[0][1] = -arr[1][0]/detCalc(arr)
+        matrix[1][0] = -arr[0][1]/detCalc(arr)
+        return matrix
     }
 }
