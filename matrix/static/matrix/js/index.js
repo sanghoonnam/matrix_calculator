@@ -207,8 +207,14 @@ const inverseCalc = (arr) => {
                 }
             }
         }
-        let k = gcd(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1],detCalc(section)[1]*detCalc(arr)[0])
-        matrix[i][j] = [parseInt(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]/k),parseInt(detCalc(section)[1]*detCalc(arr)[0]/k)]
+        if(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]!==0){
+            let k = gcd(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1],detCalc(section)[1]*detCalc(arr)[0])
+            matrix[i][j] = [parseInt(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]/k),parseInt(detCalc(section)[1]*detCalc(arr)[0]/k)]
+        }
+        else if(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]===0){
+            matrix[i][j] = [0,1]
+        }
+       
         if(matrix[i][j][1]<0){
             matrix[i][j][0] = matrix[i][j][0]*Math.pow(-1,1)
             matrix[i][j][1] = matrix[i][j][1]*Math.pow(-1,1)
@@ -240,7 +246,7 @@ const inverse = () => {
         }
     }
 
-    if(detCalc(numMatrix) === 0){
+    if(detCalc(numMatrix)[0] === 0){
         document.getElementById('inverse').innerHTML="역행렬 : 없습니다!"
     }
     
@@ -251,13 +257,37 @@ const inverse = () => {
         jaxMatrix[i] = ""
         for(let j=0;j<val;j++){
             if(j !== val-1){
-            jaxMatrix[i] += "\\frac{"+`${inverse[i][j][0]}`+"}{"+`${inverse[i][j][1]}`+"}"+ " & "
+                if(inverse[i][j][0] === 0){
+                    jaxMatrix[i] += "0" + " & ";
+                }
+                else if(inverse[i][j][1] === 1){
+                    jaxMatrix[i] += `${inverse[i][j][0]}` + " & ";
+                }
+                else{
+                    jaxMatrix[i] += "\\frac{"+`${inverse[i][j][0]}`+"}{"+`${inverse[i][j][1]}`+"}"+ " & "
+                }
             }
             else if (j === val-1 && i !== val-1){
+                if(inverse[i][j][0] === 0){
+                    jaxMatrix[i] += "0" + slash.replace("{","").replace("}","");
+                }
+                else if(inverse[i][j][1] === 1){
+                    jaxMatrix[i] += `${inverse[i][j][0]}` + slash.replace("{","").replace("}","");
+                }
+                else{
                 jaxMatrix[i] += "\\frac{"+`${inverse[i][j][0]}`+"}{"+`${inverse[i][j][1]}`+"}" + slash.replace("{","").replace("}","");
+                }
             }
             else{
+                if(inverse[i][j][0] === 0){
+                    jaxMatrix[i] += "0";
+                }
+                else if(inverse[i][j][1] === 1){
+                    jaxMatrix[i] += `${inverse[i][j][0]}`;
+                }
+                else{
                 jaxMatrix[i] += "\\frac{"+`${inverse[i][j][0]}`+"}{"+`${inverse[i][j][1]}`+"}"
+                }
             }
         }
         jaxString += jaxMatrix[i];
