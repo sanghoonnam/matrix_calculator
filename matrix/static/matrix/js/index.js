@@ -52,7 +52,7 @@ const gcd = (a,b) => {
 
 const makeMatrix = () => {
     const val = document.getElementById("inputNumber").value;
-    if(val<11 && 1<val){
+    if(val<8 && 1<val){
     const element = document.getElementById("matrix-1")
     element.parentNode.removeChild(element);
     let mat = document.getElementById("matrix");
@@ -74,7 +74,7 @@ const makeMatrix = () => {
         }
     }
 }
-else if(val>=11){
+else if(val>=8){
     document.getElementById("matrix-1").innerHTML = "TOO BIG!";
 }
 else if(val<=1){
