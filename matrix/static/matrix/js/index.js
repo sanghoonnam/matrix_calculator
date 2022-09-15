@@ -318,7 +318,5 @@ const gauss = (arr) => {
         ideal[i][i][0] = 1;
         
     }
-    console.log(ideal)
+    
 }
-
-console.log(gauss([[1,1,1],[1,1,1],[1,1,1]]))

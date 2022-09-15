@@ -44,6 +44,7 @@ body{
     justify-content: center;
     align-items: center;
     margin:0;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 #det button{
@@ -66,5 +67,24 @@ body h1{
     left:0%; 
 }
 @media screen and (max-width:575px) {
-
+h1{
+    font-size:24px;
+}    
+#size h2{
+        font-size:15px;
+    }
+#inputNumber{
+    height: 15px;
+    width: 15px;
+    margin-left:7.5px;
+    text-align: center;
+}    
+.matrixClass input {
+    width:30px;
+    height:30px;
+    text-align: center;
+}
+#det button{
+    margin-top:7.5px;
+}
 }
