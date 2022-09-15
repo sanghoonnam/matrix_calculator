@@ -89,4 +89,11 @@ body h1{
 #det button{
     margin-top:7.5px;
 }
+#inverse{
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+#result{
+    overflow-x:scroll;
+}
 }
