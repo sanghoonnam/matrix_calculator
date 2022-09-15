@@ -53,3 +53,8 @@ body{
 body h1{
     margin:0px;
 }
+
+ins{
+    position: fixed;
+    top:0%;
+}
