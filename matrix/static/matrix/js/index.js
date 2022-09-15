@@ -310,3 +310,15 @@ const transpose = (arr) => {
     }
     return arr
 }
+
+const gauss = (arr) => {
+    let len = arr[0].length;
+    let ideal = create2DArray(len,len);
+    for(let i=0;i<len;i++){
+        ideal[i][i][0] = 1;
+        
+    }
+    console.log(ideal)
+}
+
+console.log(gauss([[1,1,1],[1,1,1],[1,1,1]]))
