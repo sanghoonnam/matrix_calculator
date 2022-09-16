@@ -314,9 +314,28 @@ const transpose = (arr) => {
 const gauss = (arr) => {
     let len = arr[0].length;
     let ideal = create2DArray(len,len);
+    let pseudo = Array(len).fill(0);
     for(let i=0;i<len;i++){
-        ideal[i][i][0] = 1;
-        
+        ideal[i][i] = [1,1];
     }
     
+    for(let i=0;i<len;i++){
+        if(arr[i][i][0]!==0){
+            arr[i].map(m=> [arr[i][i][1]*m[0],arr[i][i][0]*m[1]]);
+            ideal[i].map(m=>[arr[i][i][1]*m[0],arr[i][i][0]*m[1]]);
+        }
+        else{
+            for(let j=0;j<len;j++){
+                pseudo[j] = arr[i];
+            }
+            for(let k=0;k<len;k++){
+                if(arr[k][i][0]!==0){
+                    for(let p=0;p<len;p++){
+                        arr[i][p] = arr[k][p];
+                    }
+                }
+            }
+        }
+    }
 }
+
