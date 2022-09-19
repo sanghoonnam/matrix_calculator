@@ -30,25 +30,22 @@ const fracMul = (a,b) =>{
 const gcd = (a,b) => {
     a = Math.abs(a);
     b = Math.abs(b);
-    if(a<b){
-        for(let i=a;i>0;i--){
-            if(b%i===0 && a%i === 0){
-                return i
-            }
-        }
+    if(a*b === 0){
+        return a+b;
+    }
+    else if((a-1)*(b-1) === 0){
+        return 1
+    }
+    else if(a<b){
+        return gcd(a,b-a*parseInt(b/a))
     }
     else if(b<a){
-        for(let i=b;i>0;i--){
-            if(a%i===0 && b%i ===0){
-                return i
-            }
-        }
+        return gcd(b, a-b*parseInt(a/b))
     }
-    else{
+    else if(b === a){
         return a
     }
 }
-
 
 const makeMatrix = () => {
     const val = document.getElementById("inputNumber").value;
@@ -74,7 +71,7 @@ const makeMatrix = () => {
         }
     }
 }
-else if(val>=8){
+else if(val>=9){
     document.getElementById("matrix-1").innerHTML = "TOO BIG!";
 }
 else if(val<=1){
@@ -102,17 +99,23 @@ const det = () =>{
     }
     else{
         let g = gcd(detCalc(detMatrix)[0],detCalc(detMatrix)[1]);
+       
+        let a = detCalc(detMatrix)[0]/g;
+        let b = detCalc(detMatrix)[1]/parseInt(g);
 
-        detCalc(detMatrix)[0] =  parseInt(detCalc(detMatrix)[0])/g;
-        detCalc(detMatrix)[1] = parseInt(detCalc(detMatrix)[1])/g;
 
-        if(detCalc(detMatrix)[1]<0){
-            detCalc(detMatrix)[0] = detCalc(detMatrix)[0]*Math.pow(-1,1);
-            detCalc(detMatrix)[1] = detCalc(detMatrix)[1]*Math.pow(-1,1);
+        if(b<0){
+            a = a*Math.pow(-1,1);
+            b = b*Math.pow(-1,1);
         }
-        let fracExpress = "행렬값 : "+"$\\frac{"+`${detCalc(detMatrix)[0]}`+"}{"+`${detCalc(detMatrix)[1]}`+"}$"
+        if(a%b===0){
+            document.getElementById("detValue").innerHTML = "행렬값 : "+ a/b;
+        }
+        else{
+            let fracExpress = "행렬값 : "+"$\\frac{"+`${a}`+"}{"+`${b}`+"}$"
         document.getElementById("detValue").innerHTML = fracExpress
         MathJax.Hub.Queue(["Typeset",MathJax.Hub,"detValue"]);
+        }
     }
 }
 
@@ -251,7 +254,7 @@ const inverse = () => {
     }
     
     else{
-    const inverse = inverseCalc(numMatrix);
+    const inverse = gauss(numMatrix);
 
     for(let i=0;i<val;i++){
         jaxMatrix[i] = ""
@@ -344,13 +347,27 @@ const gauss = (arr) => {
                 }
             }
         }
+
+        for(let p=0;p<len;p++){
+            if( p !== i && arr[p][i][0] !== 0){
+                ideal[p] = ideal[p].map((m,index) => fracSum([m[0],m[1]],[(-1)*arr[i][i][1]*arr[p][i][0]*ideal[i][index][0], arr[i][i][0]*arr[p][i][1]*ideal[i][index][1]]))
+                arr[p] = arr[p].map((m,index) => fracSum([m[0],m[1]],[(-1)*arr[i][i][1]*arr[p][i][0]*arr[i][index][0], arr[i][i][0]*arr[p][i][1]*arr[i][index][1]]))
+            }
+        }
+
     }
 
     for(let i=0;i<len;i++){
-
+        for(let j=0;j<len;j++){
+            if(ideal[i][j][0] !== 0){
+                let g = parseInt(gcd(ideal[i][j][0],ideal[i][j][1]));
+                ideal[i][j][0] = ideal[i][j][0]/g;
+                ideal[i][j][1] = ideal[i][j][1]/g;
+            }
+        }
     }
+
     return ideal
 }
 
-console.log(gauss([[[0,1],[2,1],[0,1]],[[1,2],[0,1],[0,1]],[[0,1],[0,1],[1,1] ]]))
 
