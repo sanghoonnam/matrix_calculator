@@ -49,7 +49,7 @@ const gcd = (a,b) => {
 
 const makeMatrix = () => {
     const val = document.getElementById("inputNumber").value;
-    if(val<8 && 1<val){
+    if(val<9 && 1<val){
     const element = document.getElementById("matrix-1")
     element.parentNode.removeChild(element);
     let mat = document.getElementById("matrix");
