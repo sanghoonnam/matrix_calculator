@@ -314,28 +314,43 @@ const transpose = (arr) => {
 const gauss = (arr) => {
     let len = arr[0].length;
     let ideal = create2DArray(len,len);
-    let pseudo = Array(len).fill(0);
+    let pseudo = Array(len).fill([0,1]);
+    let ipseudo = Array(len).fill([0,1]);
     for(let i=0;i<len;i++){
         ideal[i][i] = [1,1];
     }
     
     for(let i=0;i<len;i++){
         if(arr[i][i][0]!==0){
-            arr[i].map(m=> [arr[i][i][1]*m[0],arr[i][i][0]*m[1]]);
-            ideal[i].map(m=>[arr[i][i][1]*m[0],arr[i][i][0]*m[1]]);
+            ideal[i] = ideal[i].map(m=>[arr[i][i][1]*m[0],arr[i][i][0]*m[1]]);
+            arr[i] = arr[i].map(m=> [arr[i][i][1]*m[0],arr[i][i][0]*m[1]]);
         }
         else{
             for(let j=0;j<len;j++){
-                pseudo[j] = arr[i];
+                pseudo[j] = arr[i][j];
+                ipseudo[j] = ideal[i][j];
             }
             for(let k=0;k<len;k++){
                 if(arr[k][i][0]!==0){
                     for(let p=0;p<len;p++){
                         arr[i][p] = arr[k][p];
+                        arr[k][p] = pseudo[p];
+                        ideal[i][p] = ideal[k][p];
+                        ideal[k][p] = ipseudo[p];
                     }
+                    ideal[i] = ideal[i].map(m=>[arr[i][i][1]*m[0],arr[i][i][0]*m[1]]);
+                    arr[i] = arr[i].map(m=> [arr[i][i][1]*m[0],arr[i][i][0]*m[1]]);
+                    break
                 }
             }
         }
     }
+
+    for(let i=0;i<len;i++){
+
+    }
+    return ideal
 }
+
+console.log(gauss([[[0,1],[2,1],[0,1]],[[1,2],[0,1],[0,1]],[[0,1],[0,1],[1,1] ]]))
 
