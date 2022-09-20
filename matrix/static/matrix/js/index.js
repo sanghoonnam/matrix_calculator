@@ -143,97 +143,97 @@ const detCalc = (arr) => {
     }
 }
 
-const inverseCalc = (arr) => {
-    const len = arr[0].length
-    const matrix = create2DArray(len,len)
-    if(len>=3 && detCalc(arr)!==0){
-    for(let i=0;i<len;i++){
-        for(let j=0;j<len;j++){
-        let section = create2DArray(len-1,len-1)
-        if(i === 0 && j===0){
-            section = arr.slice(1,len).map(m => m.slice(1,len));
-        }
-        else if(i === 0 && j === len-1){
-            section = arr.slice(1,len).map(m => m.slice(0,len-1));
-        }
-        else if(i === 0){
-            section = arr.slice(1,len).map(m => [].concat(m.slice(0,j),m.slice(j+1,len)));
-        }
-        else if(i === len-1 && j === 0){
-            section = arr.slice(0,len-1).map(m => m.slice(1,len));
-        }
-        else if(i === len-1 && j === len-1){
-            section = arr.slice(0,len-1).map(m => m.slice(0,len-1));
-        }
-        else if(i === len-1){
-            section = arr.slice(0,len-1).map(m => [].concat(m.slice(0,j),m.slice(j+1,len)));
-        }
-        else if(i !== len-1 && i !== 0 && j === 0){
-            for(let m=0;m<len;m++){
-                for(let n=0;n<len-1;n++){
-                    if(m<i){
-                        section[m][n] = arr.slice(0,i).map(p => p.slice(1,len))[m][n]
-                    }
-                    else if(m>i){
-                        section[m-1][n] = arr.map(p => p.slice(1,len))[m][n]
-                    }
-                }
-            }
-        }
-        else if(i !== len-1 && i !== 0 && j === len-1){
-            for(let m=0;m<len;m++){
-                for(let n=0;n<len-1;n++){
-                    if(m<i){
-                        section[m][n] = arr[m][n]
-                    }
-                    else if(m>i){
-                        section[m-1][n] = arr[m][n]
-                    }
-                }
-            }
-        }
-        else{
-            for(let m=0;m<len;m++){
-                for(let n=0;n<len;n++){
-                    if(m<i && n<j){
-                        section[m][n] = arr[m][n]
-                    }
-                    else if(m<i && n>j){
-                        section[m][n-1] = arr[m][n]
-                    }
-                    else if(m>i && n<j){
-                        section[m-1][n] = arr[m][n]
-                    }
-                    else if(m>i && n>j){
-                        section[m-1][n-1] = arr[m][n]
-                    }
-                }
-            }
-        }
-        if(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]!==0){
-            let k = gcd(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1],detCalc(section)[1]*detCalc(arr)[0])
-            matrix[i][j] = [parseInt(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]/k),parseInt(detCalc(section)[1]*detCalc(arr)[0]/k)]
-        }
-        else if(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]===0){
-            matrix[i][j] = [0,1]
-        }
+// const inverseCalc = (arr) => {
+//     const len = arr[0].length
+//     const matrix = create2DArray(len,len)
+//     if(len>=3 && detCalc(arr)!==0){
+//     for(let i=0;i<len;i++){
+//         for(let j=0;j<len;j++){
+//         let section = create2DArray(len-1,len-1)
+//         if(i === 0 && j===0){
+//             section = arr.slice(1,len).map(m => m.slice(1,len));
+//         }
+//         else if(i === 0 && j === len-1){
+//             section = arr.slice(1,len).map(m => m.slice(0,len-1));
+//         }
+//         else if(i === 0){
+//             section = arr.slice(1,len).map(m => [].concat(m.slice(0,j),m.slice(j+1,len)));
+//         }
+//         else if(i === len-1 && j === 0){
+//             section = arr.slice(0,len-1).map(m => m.slice(1,len));
+//         }
+//         else if(i === len-1 && j === len-1){
+//             section = arr.slice(0,len-1).map(m => m.slice(0,len-1));
+//         }
+//         else if(i === len-1){
+//             section = arr.slice(0,len-1).map(m => [].concat(m.slice(0,j),m.slice(j+1,len)));
+//         }
+//         else if(i !== len-1 && i !== 0 && j === 0){
+//             for(let m=0;m<len;m++){
+//                 for(let n=0;n<len-1;n++){
+//                     if(m<i){
+//                         section[m][n] = arr.slice(0,i).map(p => p.slice(1,len))[m][n]
+//                     }
+//                     else if(m>i){
+//                         section[m-1][n] = arr.map(p => p.slice(1,len))[m][n]
+//                     }
+//                 }
+//             }
+//         }
+//         else if(i !== len-1 && i !== 0 && j === len-1){
+//             for(let m=0;m<len;m++){
+//                 for(let n=0;n<len-1;n++){
+//                     if(m<i){
+//                         section[m][n] = arr[m][n]
+//                     }
+//                     else if(m>i){
+//                         section[m-1][n] = arr[m][n]
+//                     }
+//                 }
+//             }
+//         }
+//         else{
+//             for(let m=0;m<len;m++){
+//                 for(let n=0;n<len;n++){
+//                     if(m<i && n<j){
+//                         section[m][n] = arr[m][n]
+//                     }
+//                     else if(m<i && n>j){
+//                         section[m][n-1] = arr[m][n]
+//                     }
+//                     else if(m>i && n<j){
+//                         section[m-1][n] = arr[m][n]
+//                     }
+//                     else if(m>i && n>j){
+//                         section[m-1][n-1] = arr[m][n]
+//                     }
+//                 }
+//             }
+//         }
+//         if(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]!==0){
+//             let k = gcd(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1],detCalc(section)[1]*detCalc(arr)[0])
+//             matrix[i][j] = [parseInt(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]/k),parseInt(detCalc(section)[1]*detCalc(arr)[0]/k)]
+//         }
+//         else if(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]===0){
+//             matrix[i][j] = [0,1]
+//         }
        
-        if(matrix[i][j][1]<0){
-            matrix[i][j][0] = matrix[i][j][0]*Math.pow(-1,1)
-            matrix[i][j][1] = matrix[i][j][1]*Math.pow(-1,1)
-        }
-    }
-    }
-    return transpose(matrix)
-    }
-    else if(len === 2 && detCalc(arr)!==0){
-        matrix[0][0] = [arr[1][1][0]*detCalc(arr)[1],arr[1][1][1]*detCalc(arr)[0]]
-        matrix[1][1] = [arr[0][0][0]*detCalc(arr)[1],arr[0][0][1]*detCalc(arr)[0]]
-        matrix[0][1] = [arr[1][0][0]*Math.pow(-1,1)*detCalc(arr)[1],arr[1][0][1]*detCalc(arr)[0]]
-        matrix[1][0] = [arr[0][1][0]*Math.pow(-1,1)*detCalc(arr)[1],arr[0][1][1]*detCalc(arr)[0]]
-        return matrix
-    }
-}
+//         if(matrix[i][j][1]<0){
+//             matrix[i][j][0] = matrix[i][j][0]*Math.pow(-1,1)
+//             matrix[i][j][1] = matrix[i][j][1]*Math.pow(-1,1)
+//         }
+//     }
+//     }
+//     return transpose(matrix)
+//     }
+//     else if(len === 2 && detCalc(arr)!==0){
+//         matrix[0][0] = [arr[1][1][0]*detCalc(arr)[1],arr[1][1][1]*detCalc(arr)[0]]
+//         matrix[1][1] = [arr[0][0][0]*detCalc(arr)[1],arr[0][0][1]*detCalc(arr)[0]]
+//         matrix[0][1] = [arr[1][0][0]*Math.pow(-1,1)*detCalc(arr)[1],arr[1][0][1]*detCalc(arr)[0]]
+//         matrix[1][0] = [arr[0][1][0]*Math.pow(-1,1)*detCalc(arr)[1],arr[0][1][1]*detCalc(arr)[0]]
+//         return matrix
+//     }
+// }
 
 const inverse = () => {
     let val = document.getElementById("inputNumber").value;
@@ -301,57 +301,71 @@ const inverse = () => {
 }
 }
 
-const transpose = (arr) => {
-    let len = arr[0].length
-    let flag = 0;
-    for(let i=1;i<len;i++){
-        for(let j=0;j<i;j++){
-            flag = arr[i][j];
-            arr[i][j] = arr[j][i];
-            arr[j][i] = flag;
-        }
-    }
-    return arr
-}
+// const transpose = (arr) => {
+//     let len = arr[0].length
+//     let flag = 0;
+//     for(let i=1;i<len;i++){
+//         for(let j=0;j<i;j++){
+//             flag = arr[i][j];
+//             arr[i][j] = arr[j][i];
+//             arr[j][i] = flag;
+//         }
+//     }
+//     return arr
+// }
 
-const gauss = (arr) => {
-    let len = arr[0].length;
+const gauss = (arra) => {
+    let len = arra[0].length;
     let ideal = create2DArray(len,len);
     let pseudo = Array(len).fill([0,1]);
     let ipseudo = Array(len).fill([0,1]);
+    let conti;
+    let conta;
+
     for(let i=0;i<len;i++){
         ideal[i][i] = [1,1];
     }
     
     for(let i=0;i<len;i++){
-        if(arr[i][i][0]!==0){
-            ideal[i] = ideal[i].map(m=>[arr[i][i][1]*m[0],arr[i][i][0]*m[1]]);
-            arr[i] = arr[i].map(m=> [arr[i][i][1]*m[0],arr[i][i][0]*m[1]]);
+        if(arra[i][i][0]!==0){
+            conti = ideal[i].map(m=>[arra[i][i][1]*m[0],arra[i][i][0]*m[1]]);
+            conta = arra[i].map(m=> [arra[i][i][1]*m[0],arra[i][i][0]*m[1]]);
+            for(let k=0;k<len;k++){
+                ideal[i][k] = conti[k]
+                arra[i][k] = conta[k] 
+            }
         }
         else{
             for(let j=0;j<len;j++){
-                pseudo[j] = arr[i][j];
+                pseudo[j] = arra[i][j];
                 ipseudo[j] = ideal[i][j];
             }
-            for(let k=0;k<len;k++){
-                if(arr[k][i][0]!==0){
+            for(let k=i;k<len;k++){
+                if(arra[k][i][0]!==0){
                     for(let p=0;p<len;p++){
-                        arr[i][p] = arr[k][p];
-                        arr[k][p] = pseudo[p];
+                        arra[i][p] = arra[k][p];
+                        arra[k][p] = pseudo[p];
                         ideal[i][p] = ideal[k][p];
                         ideal[k][p] = ipseudo[p];
                     }
-                    ideal[i] = ideal[i].map(m=>[arr[i][i][1]*m[0],arr[i][i][0]*m[1]]);
-                    arr[i] = arr[i].map(m=> [arr[i][i][1]*m[0],arr[i][i][0]*m[1]]);
+                    conti = ideal[i].map(m=>[arra[i][i][1]*m[0],arra[i][i][0]*m[1]]);
+                    conta = arra[i].map(m=> [arra[i][i][1]*m[0],arra[i][i][0]*m[1]]);
+                    for(let k=0;k<len;k++){
+                        ideal[i][k] = conti[k];
+                        arra[i][k] = conta[k];
+                    }
                     break
                 }
             }
         }
-
         for(let p=0;p<len;p++){
-            if( p !== i && arr[p][i][0] !== 0){
-                ideal[p] = ideal[p].map((m,index) => fracSum([m[0],m[1]],[(-1)*arr[i][i][1]*arr[p][i][0]*ideal[i][index][0], arr[i][i][0]*arr[p][i][1]*ideal[i][index][1]]))
-                arr[p] = arr[p].map((m,index) => fracSum([m[0],m[1]],[(-1)*arr[i][i][1]*arr[p][i][0]*arr[i][index][0], arr[i][i][0]*arr[p][i][1]*arr[i][index][1]]))
+            if(p !== i && arra[p][i][0] !== 0){
+                conti = ideal[p].map((m,index) => {return fracSum(m,[(-1)*arra[p][i][0]*ideal[i][index][0], arra[p][i][1]*ideal[i][index][1]])})
+                conta = arra[p].map((m,index) => {return fracSum(m,[(-1)*arra[p][i][0]*arra[i][index][0], arra[p][i][1]*arra[i][index][1]])})
+                for(let k=0;k<len;k++){
+                    ideal[p][k] = conti[k];
+                    arra[p][k] = conta[k];
+                }
             }
         }
 
@@ -360,14 +374,15 @@ const gauss = (arr) => {
     for(let i=0;i<len;i++){
         for(let j=0;j<len;j++){
             if(ideal[i][j][0] !== 0){
+                if(ideal[i][j][1] < 0){
+                    ideal[i][j][0] = (-1)*ideal[i][j][0]
+                    ideal[i][j][1] = (-1)*ideal[i][j][1]
+                }
                 let g = parseInt(gcd(ideal[i][j][0],ideal[i][j][1]));
                 ideal[i][j][0] = ideal[i][j][0]/g;
                 ideal[i][j][1] = ideal[i][j][1]/g;
             }
         }
     }
-
     return ideal
 }
-
-
