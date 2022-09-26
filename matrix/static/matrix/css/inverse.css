@@ -116,7 +116,7 @@ body h1{
     cursor:pointer;
     padding:3px;
     height:30px;
-    width:70px;
+    width:100px;
 }
 @media screen and (max-width:575px) {
 body h1{
@@ -158,3 +158,13 @@ body h1{
 }
 }
 
+@media screen and (max-height:575px) {
+    .head{
+        display:none;
+    }    
+    #first{
+        position: absolute;
+    top:0%;
+    left:0%;
+    }
+}
