@@ -85,3 +85,11 @@ body{
     margin: 20px;
     cursor:pointer;
 }
+
+@media screen and (max-width:575px) {
+    .logo{
+        width: 150px;
+        height:15.15px;
+        margin: 10px;
+    }   
+}
