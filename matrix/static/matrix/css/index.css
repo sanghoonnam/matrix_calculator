@@ -1,65 +1,10 @@
-.matrixClass input {
-    width:40px;
-    height:40px;
-    text-align: center;
-}
-
-#matrix{
-    width:auto;
-    height:auto;
-}
-
-.matrixClass{
-    display:flex;
-
-}
-
-.matrix-1{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
-}
-
-#size{
-    display: flex;
-    align-items: center;
-}
-
-#size h2{
-    font-size:18px;
-}
-
-#inputNumber{
-    height:20px;
-    width:20px;
-    margin-left:10px;
-    text-align: center;
-}
-
 body{
-    height:100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin:0;
-    font-family: 'Nanum Gothic', sans-serif;
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
-#det button{
-    margin-top:10px;
-}
-
-body h1{
     margin:0px;
-    font-size:30px;
+    padding:0px;
 }
-
 #first{
     position: absolute;
-    top:0%;
+    top:70.3px;
     left:0%;
 }
 
@@ -68,34 +13,75 @@ body h1{
     bottom:0%;
     left:0%; 
 }
-@media screen and (max-width:575px) {
-body h1{
-    font-size:24px;
-}    
-#size h2{
-        font-size:15px;
-    }
-#inputNumber{
-    height: 15px;
-    width: 15px;
-    margin-left:7.5px;
-    text-align: center;
-}    
-.matrixClass input {
-    width:30px;
-    height:30px;
+
+#title{
+    margin-top:50px;
     text-align: center;
 }
-#det button{
-    margin-top:7.5px;
+
+
+.calcButton{
+    position:absolute;
+    left:50%;
+    transform: translate(-50%,0%);
 }
-#inverse{
-    overflow-x: auto;
-    overflow-y: hidden;
+
+.button{
+    color: #007bff;
+    border-color: #007bff;
+    cursor: pointer;    
+    background-color: transparent;
+    border: 1px solid;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
-#result{
-    overflow-x: auto;
-    overflow-y: hidden;
-    max-width:100%;
+
+.button:hover{
+    color:white;
+    background-color: #007bff;
+    border-color:white;
 }
+
+.logo{
+    width: 300px;
+    height:30.3px;
+    margin: 20px;
+}
+
+.first-card{
+    margin-top:50px;
+}
+
+.btn{
+    color: #007bff;
+    border-color: #007bff;
+    cursor: pointer;    
+    background-color: transparent;
+    border: 1px solid;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    margin-top: 100px;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn:hover{
+    color:white;
+    background-color: #007bff;
+    border-color:white;
+}
+
+.head{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lang{
+    margin: 20px;
+    cursor:pointer;
 }

@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Matrix Calculator</title>
-    <meta name="description" content="온라인 역행렬 계산기를 사용하여 3x3, 4x4, nxn의 역행렬 쉽고 빠르게 찾기."/>
+    <title>역행렬 계산기</title>
+    <meta name="description" content="역행렬 계산기를 사용하여 3x3, 4x4, nxn의 역행렬 쉽고 빠르게 찾기."/>
     <meta name="Googlebot" content="index, follow" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK9NHJW4W9"></script>
@@ -15,9 +15,9 @@
      gtag('config', 'G-XK9NHJW4W9');
     </script>
     <meta name="google-site-verification" content="Ls7TEOGDNG6JEV0c-wPGytunaWl4dw4PGLSXABRFmws" />
-    <link rel="stylesheet" href="/static/matrix/css/index.css">
+    <link rel="stylesheet" href="/static/matrix/css/inverse.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1 minimum-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
     <script type="text/x-mathjax-config">
@@ -28,49 +28,59 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   </head>
   <body>
     <div class="head">
-      <img class="logo" src="/static/matrix/image/calculator-logo.png"/>  
-      <select class="lang" onchange="window.location.href=this.value">
-        <option value="ko">한국어</option>
-        <option value="en" selected>English</option>
-        <option value="ja">日本語</option>
-      </select>  
-      </div>
+      <a href="/ko"><img class="logo" src="/static/matrix/image/calculator-logo.png"/></a>    
+    </div>
     <ins id="first" class="kakao_ad_area" style="display:none;" 
  data-ad-unit    = "DAN-xQjLxyaJavjV4drW" 
  data-ad-width   = "320" 
  data-ad-height  = "50"></ins> 
 <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-
-<div class="card first-card">
-  <div class="card-header">
-    First Calculator
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Inverse Matrix Calculator</h5>
-    <p class="card-text">You can calculate inverse matrix and determinant</p>
-    <a href="/en/inverse" class=""><button class="button">Calculate Now!</button></a>
-  </div>
-</div>
-<div class="card">
-  <div class="card-header">
-    Second Calculator
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Matrix Multiplication Calculator</h5>
-    <p class="card-text">We are preparing...</p>
-    <a href="#" class=""><button class="button">Calculate Now!</button></a>
-  </div>
-</div>
+    <div id="title-lang">
+    <h1>역행렬 계산기</h1>
+    <select id="lang" onchange="window.location.href=this.value">
+      <option value="/ko/inverse" selected>한국어</option>
+      <option value="/en/inverse">English</option>
+      <option value="/ja/inverse">日本語</option>
+    </select>
+    </div>
+    <div id="size">
+    <h2>행의 길이를 설정해주세요</h2>
+    <input type="text" id="inputNumber" onkeyup="makeMatrix()" value="3">
+    </div>
+    <div id="matrix">
+        <div id="matrix-1">
+            <div class="matrixClass">
+                <input id="0-0">
+                <input id="0-1">
+                <input id="0-2">
+            </div>
+            <div class="matrixClass">
+                <input id="1-0">
+                <input id="1-1">
+                <input id="1-2">
+            </div>
+            <div class="matrixClass">
+                <input id="2-0">
+                <input id="2-1">
+                <input id="2-2">
+            </div>
+        </div>
+    </div>
+    <div id="det">
+    <button onclick="det(); inverse();" id="detButton">역행렬 구하기</button>
+    </div>
+    <div id="result">
+      <p id="detValue">행렬식 : </p>
+      <p id="inverse">역행렬 : </p>
+    </div>
     <ins id="last" class="kakao_ad_area" style="display:none;" 
  data-ad-unit    = "DAN-xQjLxyaJavjV4drW" 
  data-ad-width   = "320" 
  data-ad-height  = "50"></ins>
  <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script> 
-<script src="/static/matrix/js/index.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="/static/matrix/js/inverse.js"></script>
   </body>
 </html>

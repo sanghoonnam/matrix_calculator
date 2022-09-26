@@ -20,14 +20,24 @@ const fraction = (num) => {
 }
 
 const fracSum = (a,b) => {
+    a[0] = parseInt(a[0])
+    a[1] = parseInt(a[1])
+    b[0] = parseInt(b[0])
+    b[1] = parseInt(b[1])
     return [parseInt(a[0]*b[1]+a[1]*b[0]),parseInt(a[1]*b[1])]
 }
 
 const fracMul = (a,b) =>{
+    a[0] = parseInt(a[0])
+    a[1] = parseInt(a[1])
+    b[0] = parseInt(b[0])
+    b[1] = parseInt(b[1])
     return [parseInt(a[0]*b[0]),parseInt(a[1]*b[1])]
 }
 
 const gcd = (a,b) => {
+    a = parseInt(a);
+    b = parseInt(b);
     a = Math.abs(a);
     b = Math.abs(b);
     if(a*b === 0){
@@ -89,13 +99,13 @@ const det = () =>{
         }
     }
     if(detCalc(detMatrix)[1] === 1){
-        document.getElementById("detValue").innerHTML = `행렬값 : ${detCalc(detMatrix)[0]}`
+        document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+`${detCalc(detMatrix)[0]}`
     }
     else if(detCalc(detMatrix)[1] === -1){
-        document.getElementById("detValue").innerHTML = `행렬값 : ${detCalc(detMatrix)[0]*Math.pow(-1,1)}`
+        document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+`${detCalc(detMatrix)[0]*Math.pow(-1,1)}`
     }
     else if(detCalc(detMatrix)[0] === 0){
-        document.getElementById("detValue").innerHTML = `행렬값 : 0`
+        document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+`0`
     }
     else{
         let g = gcd(detCalc(detMatrix)[0],detCalc(detMatrix)[1]);
@@ -109,7 +119,7 @@ const det = () =>{
             b = b*Math.pow(-1,1);
         }
         if(a%b===0){
-            document.getElementById("detValue").innerHTML = "행렬값 : "+ a/b;
+            document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+ a/b;
         }
         else{
             let fracExpress = "행렬값 : "+"$\\frac{"+`${a}`+"}{"+`${b}`+"}$"
@@ -238,7 +248,7 @@ const detCalc = (arr) => {
 const inverse = () => {
     let val = document.getElementById("inputNumber").value;
     val = parseInt(val);
-    let jaxString = "역행렬 : $\\begin{pmatrix}";
+    let jaxString = document.getElementById('inverse').innerHTML+"$\\begin{pmatrix}";
     let jaxMatrix = new Array();
     const slash = "{ \\\\ }";
 
@@ -250,7 +260,7 @@ const inverse = () => {
     }
 
     if(detCalc(numMatrix)[0] === 0){
-        document.getElementById('inverse').innerHTML="역행렬 : 없습니다!"
+        document.getElementById('inverse').innerHTML=document.getElementById('inverse').innerHTML+ "없습니다!"
     }
     
     else{
@@ -327,9 +337,9 @@ const gauss = (arra) => {
     }
     
     for(let i=0;i<len;i++){
-        if(arra[i][i][0]!==0){
-            conti = ideal[i].map(m=>[arra[i][i][1]*m[0],arra[i][i][0]*m[1]]);
-            conta = arra[i].map(m=> [arra[i][i][1]*m[0],arra[i][i][0]*m[1]]);
+        if(parseInt(arra[i][i][0])!==0){
+            conti = ideal[i].map(m=>[parseInt(arra[i][i][1])*parseInt(m[0]),parseInt(arra[i][i][0])*parseInt(m[1])]);
+            conta = arra[i].map(m=> [parseInt(arra[i][i][1])*parseInt(m[0]),parseInt(arra[i][i][0])*parseInt(m[1])]);
             for(let k=0;k<len;k++){
                 ideal[i][k] = conti[k]
                 arra[i][k] = conta[k] 
@@ -341,32 +351,34 @@ const gauss = (arra) => {
                 ipseudo[j] = ideal[i][j];
             }
             for(let k=i;k<len;k++){
-                if(arra[k][i][0]!==0){
+                if(parseInt(arra[k][i][0])!==0){
                     for(let p=0;p<len;p++){
                         arra[i][p] = arra[k][p];
                         arra[k][p] = pseudo[p];
                         ideal[i][p] = ideal[k][p];
                         ideal[k][p] = ipseudo[p];
                     }
-                    conti = ideal[i].map(m=>[arra[i][i][1]*m[0],arra[i][i][0]*m[1]]);
-                    conta = arra[i].map(m=> [arra[i][i][1]*m[0],arra[i][i][0]*m[1]]);
+                    conti = ideal[i].map(m=>[parseInt(arra[i][i][1])*parseInt(m[0]),parseInt(arra[i][i][0])*parseInt(m[1])]);
+                    conta = arra[i].map(m=> [parseInt(arra[i][i][1])*parseInt(m[0]),parseInt(arra[i][i][0])*parseInt(m[1])]);
                     for(let k=0;k<len;k++){
-                        ideal[i][k] = conti[k];
-                        arra[i][k] = conta[k];
+                        ideal[i][k] = conti[k]
+                        arra[i][k] = conta[k] 
                     }
                     break
                 }
             }
         }
         for(let p=0;p<len;p++){
-            if(p !== i && arra[p][i][0] !== 0){
-                conti = ideal[p].map((m,index) => {return fracSum(m,[(-1)*arra[p][i][0]*ideal[i][index][0], arra[p][i][1]*ideal[i][index][1]])})
-                conta = arra[p].map((m,index) => {return fracSum(m,[(-1)*arra[p][i][0]*arra[i][index][0], arra[p][i][1]*arra[i][index][1]])})
+            if(p !== i && parseInt(arra[p][i][0]) !== 0){
+                conti = ideal[p].map((m,index) => {return fracSum([parseInt(m[0]),parseInt(m[1])],[parseInt(arra[p][i][0])*parseInt(ideal[i][index][0])*Math.pow(-1,1), parseInt(arra[p][i][1])*parseInt(ideal[i][index][1])])})
+                conta = arra[p].map((m,index) => {return fracSum([parseInt(m[0]),parseInt(m[1])],[parseInt(arra[p][i][0])*parseInt(arra[i][index][0])*Math.pow(1,-1), parseInt(arra[p][i][1])*parseInt(arra[i][index][1])])})
                 for(let k=0;k<len;k++){
                     ideal[p][k] = conti[k];
                     arra[p][k] = conta[k];
                 }
             }
+            let g = parseInt(gcd(parseInt(ideal[i][p][0]),parseInt(ideal[i][p][1])));
+                ideal[i][p] = [parseInt(ideal[i][p][0])/g, parseInt(ideal[i][p][1])/g];
         }
 
     }
@@ -375,14 +387,20 @@ const gauss = (arra) => {
         for(let j=0;j<len;j++){
             if(ideal[i][j][0] !== 0){
                 if(ideal[i][j][1] < 0){
-                    ideal[i][j][0] = (-1)*ideal[i][j][0]
-                    ideal[i][j][1] = (-1)*ideal[i][j][1]
+                    ideal[i][j]= [parseInt(ideal[i][j][0])*Math.pow(-1,1), parseInt(ideal[i][j][1])*Math.pow(-1,1)]
                 }
-                let g = parseInt(gcd(ideal[i][j][0],ideal[i][j][1]));
-                ideal[i][j][0] = ideal[i][j][0]/g;
-                ideal[i][j][1] = ideal[i][j][1]/g;
+                let g = parseInt(gcd(parseInt(ideal[i][j][0]),parseInt(ideal[i][j][1])));
+                ideal[i][j] = [parseInt(ideal[i][j][0])/g, parseInt(ideal[i][j][1])/g];
             }
         }
     }
+    console.log(ideal)
+    console.log(arra)
     return ideal
 }
+
+// console.log(gauss([[[134,1],[1324,1],[8,1],[239,1],[378,1]],[[189,1],[209,1],[3,1],[278,1],[892,1]],[[1920,1],[4,1],[0,1],[189,1],[19,1]],[[389,1],[203,1],[390,1],[183,1],[10,1]],[[9,1],[20,1],[4,1],[0,1],[1,1]]]))
+
+// console.log(gauss([[[192,1],[283,1],[102,1],[494,1]],[[281,1],[364,1],[203,1],[901,1]],[[29,1],[789,1],[182,1],[4567,1]],[[32,1],[293,1],[384,1],[456,1]]]))
+
+gauss([[[192,1],[283,1],[102,1]],[[281,1],[364,1],[203,1]],[[29,1],[789,1],[182,1]]])

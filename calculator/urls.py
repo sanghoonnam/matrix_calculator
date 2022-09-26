@@ -21,5 +21,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("",matrix.views.index,name="index")
+    path("",matrix.views.index,name="index"),
+    path("en/inverse",matrix.views.inverseEn, name="inverseEn"),
+    path("ko/inverse",matrix.views.inverseKo,name="inverseKo"),
+    path("ja/inverse",matrix.views.inverseJa, name="inverseJa"),
+    path("en",matrix.views.indexEn, name="inverseEn"),
+    path("ko",matrix.views.indexKo,name="inverseKo"),
+    path("ja",matrix.views.indexJa, name="inverseJa")
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
