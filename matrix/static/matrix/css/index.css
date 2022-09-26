@@ -84,6 +84,10 @@ body{
 .lang{
     margin: 20px;
     cursor:pointer;
+    padding:3px;
+    height:30px;
+    width:70px;
+    font-size:13px;
 }
 
 @media screen and (max-width:575px) {
@@ -95,12 +99,4 @@ body{
     .first-card{
         margin-top:50px;
     }   
-    .lang{
-        margin:10px;
-    }
-    #first{
-        position: absolute;
-        top:45px;
-        left:0%;
-    }
 }

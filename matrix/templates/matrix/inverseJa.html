@@ -31,7 +31,12 @@
   </head>
   <body>
     <div class="head">
-      <a href="/ja"><img class="logo" src="/static/matrix/image/calculator-logo.png"/></a>    
+      <a href="/ja"><img class="logo" src="/static/matrix/image/calculator-logo.png"/></a>
+      <select class="lang" onchange="window.location.href=this.value">
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+        <option value="ja" selected>日本語</option>
+      </select>      
     </div>
     <ins id="first" class="kakao_ad_area" style="display:none;" 
  data-ad-unit    = "DAN-xQjLxyaJavjV4drW" 
@@ -40,11 +45,6 @@
 <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
     <div id="title-lang">
     <h1>逆行列計算機</h1>
-    <select id="lang" onchange="window.location.href=this.value">
-      <option value="/ko/inverse">한국어</option>
-      <option value="/en/inverse">English</option>
-      <option value="/ja/inverse" selected>日本語</option>
-    </select>
     </div>
     <div id="size">
     <h2>行列サイズ</h2>
