@@ -163,6 +163,8 @@ body h1{
 }
 #example{
     font-size:12px;
+    margin:0;
+    margin-bottom:5px;
 }
 }
 
