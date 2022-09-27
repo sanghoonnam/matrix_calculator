@@ -118,6 +118,11 @@ body h1{
     height:30px;
     width:100px;
 }
+#example{
+    margin:0;
+    margin-bottom:5px;
+    font-size:15px;
+}
 @media screen and (max-width:575px) {
 body h1{
     font-size:24px;
@@ -126,8 +131,8 @@ body h1{
         font-size:15px;
     }
 #inputNumber{
-    height: 18.75px;
-    width: 18.75px;
+    height: 20px;
+    width: 20px;
     margin-left:7.5px;
     text-align: center;
 }    
@@ -155,6 +160,9 @@ body h1{
 }
 .head a{
     height:35.15px;
+}
+#example{
+    font-size:12px;
 }
 }
 

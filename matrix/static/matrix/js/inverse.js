@@ -111,6 +111,9 @@ else if(val<=1){
 
 const det = () =>{
     let val = document.getElementById("inputNumber").value;
+    let detString = document.getElementById("detValue").innerHTML;
+    detString = detString.split(":")[0];
+    document.getElementById("detValue").innerHTML = detString + ": ";
     val = parseInt(val);
     let detMatrix = create2DArray(val,val);
     for(let i=0;i<val;i++){
@@ -142,8 +145,8 @@ const det = () =>{
             document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+ a/b;
         }
         else{
-            let fracExpress = "행렬값 : "+"$\\frac{"+`${a}`+"}{"+`${b}`+"}$"
-        document.getElementById("detValue").innerHTML = fracExpress
+            let fracExpress = "$\\frac{"+`${a}`+"}{"+`${b}`+"}$"
+        document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML + fracExpress;
         MathJax.Hub.Queue(["Typeset",MathJax.Hub,"detValue"]);
         }
     }
@@ -178,6 +181,7 @@ const inverse = () => {
     let val = document.getElementById("inputNumber").value;
     val = parseInt(val);
     let jaxString = document.getElementById('inverse').innerHTML+"$\\begin{pmatrix}";
+    jaxString = jaxString.split(":")[0] + ": "+"$\\begin{pmatrix}";
     let jaxMatrix = new Array();
     const slash = "{ \\\\ }";
 
@@ -339,8 +343,6 @@ const gauss = (arra) => {
 
 
 
-
-
 // const inverseCalc = (arr) => {
 //     const len = arr[0].length
 //     const matrix = create2DArray(len,len)
@@ -432,3 +434,16 @@ const gauss = (arra) => {
 //         return matrix
 //     }
 // }
+
+
+if(window.location.href.includes("en")){
+    document.getElementById("example").innerHTML = `input example : 1/2, 0.3, 1`
+}
+
+else if(window.location.href.includes("ko")){
+    document.getElementById("example").innerHTML = `입력예시 : 1/2, 0.3, 1`
+}
+
+else if(window.location.href.includes("ja")){
+    document.getElementById("example").innerHTML = `入力例 : 1/2, 0.3, 1`
+}
