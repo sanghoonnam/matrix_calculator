@@ -24,3 +24,9 @@ def indexKo(request):
 
 def indexJa(request):
     return render(request, "matrix/indexJa.html")    
+
+def indexCh(request):
+    return render(request, "matrix/indexCh.html")
+
+def inverseCh(request):
+    return render(request, "matrix/inverseCh.html")  

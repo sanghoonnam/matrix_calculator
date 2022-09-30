@@ -202,6 +202,9 @@ const inverse = () => {
         else if(window.location.href.includes("ja")){
             document.getElementById('inverse').innerHTML="結果 : 存在しない"
         }
+        else if(window.location.href.includes("ch")){
+            document.getElementById('inverse').innerHTML="逆矩阵 : 不存在！"
+        }
     }
     
     else{
@@ -454,4 +457,7 @@ else if(window.location.href.includes("ko")){
 
 else if(window.location.href.includes("ja")){
     document.getElementById("example").innerHTML = `入力例 : 1/2, 0.3, 1`
+}
+else if(window.location.href.includes("ch")){
+    document.getElementById("example").innerHTML = `输入示例 : 1/2, 0.3, 1`
 }
