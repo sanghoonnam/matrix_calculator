@@ -193,7 +193,15 @@ const inverse = () => {
     }
 
     if(detCalc(numMatrix)[0] === 0){
+        if(window.location.href.includes("en")){
+            document.getElementById('inverse').innerHTML=document.getElementById('inverse').innerHTML+ "Not exist!"
+        }
+        else if(window.location.href.includes("ko")){
         document.getElementById('inverse').innerHTML=document.getElementById('inverse').innerHTML+ "없습니다!"
+        }
+        else if(window.location.href.includes("ja")){
+            document.getElementById('inverse').innerHTML=document.getElementById('inverse').innerHTML+ "存在しない"
+        }
     }
     
     else{

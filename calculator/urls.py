@@ -18,6 +18,8 @@ from django.urls import path
 import matrix.views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import sitemaps
+from django.contrib.sitemaps.views import sitemap
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,5 +29,5 @@ urlpatterns = [
     path("ja/inverse",matrix.views.inverseJa, name="inverseJa"),
     path("en",matrix.views.indexEn, name="inverseEn"),
     path("ko",matrix.views.indexKo,name="inverseKo"),
-    path("ja",matrix.views.indexJa, name="inverseJa")
+    path("ja",matrix.views.indexJa, name="inverseJa"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

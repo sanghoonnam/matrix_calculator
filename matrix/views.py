@@ -1,5 +1,8 @@
+from http.client import HTTPResponse
 from django.shortcuts import render
 
+def sitemap(request):
+    return render(request, 'sitemap.xml', content_type="text/xml")
 
 def index(request):
     return render(request, 'matrix/index.html')
