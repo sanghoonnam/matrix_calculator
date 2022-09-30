@@ -200,10 +200,13 @@ const inverse = () => {
         document.getElementById('inverse').innerHTML="역행렬 : 없습니다!"
         }
         else if(window.location.href.includes("ja")){
-            document.getElementById('inverse').innerHTML="結果 : 存在しない"
+            document.getElementById('inverse').innerHTML="逆行列 : 存在しない!"
         }
         else if(window.location.href.includes("ch")){
             document.getElementById('inverse').innerHTML="逆矩阵 : 不存在！"
+        }
+        else if(window.location.href.includes("sp")){
+            document.getElementById('inverse').innerHTML="Matriz inversa : ¡No existe!"
         }
     }
     
@@ -460,4 +463,7 @@ else if(window.location.href.includes("ja")){
 }
 else if(window.location.href.includes("ch")){
     document.getElementById("example").innerHTML = `输入示例 : 1/2, 0.3, 1`
+}
+else if(window.location.href.includes("sp")){
+    document.getElementById("example").innerHTML = `ejemplo de entrada : 1/2, 0.3, 1`
 }

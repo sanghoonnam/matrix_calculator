@@ -29,4 +29,9 @@ def indexCh(request):
     return render(request, "matrix/indexCh.html")
 
 def inverseCh(request):
-    return render(request, "matrix/inverseCh.html")  
+    return render(request, "matrix/inverseCh.html") 
+
+def indexSp(request):
+    return render(request, "matrix/indexSp.html") 
+def inverseSp(request):
+    return render(request, "matrix/inverseSp.html") 
