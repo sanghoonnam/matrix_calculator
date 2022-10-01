@@ -467,3 +467,8 @@ else if(window.location.href.includes("ch")){
 else if(window.location.href.includes("sp")){
     document.getElementById("example").innerHTML = `ejemplo de entrada : 1/2, 0.3, 1`
 }
+
+
+document.querySelectorAll(".matrixClass input").addEventListener("click", function(event){
+event.preventDefault();
+})
