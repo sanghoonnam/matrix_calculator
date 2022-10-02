@@ -35,3 +35,8 @@ def indexSp(request):
     return render(request, "matrix/indexSp.html") 
 def inverseSp(request):
     return render(request, "matrix/inverseSp.html") 
+
+def indexVi(request):
+    return render(request, "matrix/indexVi.html") 
+def inverseVi(request):
+    return render(request, "matrix/inverseVi.html") 
