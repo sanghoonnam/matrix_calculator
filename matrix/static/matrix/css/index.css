@@ -2,6 +2,11 @@ body{
     margin:0px;
     padding:0px;
 }
+
+.card{
+    width:100% !important;
+}
+
 #first{
     position: absolute;
     top:70.3px;
