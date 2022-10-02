@@ -211,6 +211,9 @@ const inverse = () => {
         else if(window.location.href.includes("vi")){
             document.getElementById('inverse').innerHTML="Result : Không tồn tại!"
         }
+        else if(window.location.href.includes("po")){
+            document.getElementById('inverse').innerHTML="Resultado : Não existe!"
+        }
     }
     
     else{
@@ -454,7 +457,7 @@ const gauss = (arra) => {
 
 
 if(window.location.href.includes("en")){
-    document.getElementById("example").innerHTML = `input example : 1/2, 0.3, 1`
+    document.getElementById("example").innerHTML = `Input example : 1/2, 0.3, 1`
 }
 
 else if(window.location.href.includes("ko")){
@@ -468,10 +471,13 @@ else if(window.location.href.includes("ch")){
     document.getElementById("example").innerHTML = `输入示例 : 1/2, 0.3, 1`
 }
 else if(window.location.href.includes("sp")){
-    document.getElementById("example").innerHTML = `ejemplo de entrada : 1/2, 0.3, 1`
+    document.getElementById("example").innerHTML = `Ejemplo de entrada : 1/2, 0.3, 1`
 }
 else if(window.location.href.includes("vi")){
-    document.getElementById("example").innerHTML = `ví dụ đầu vào : 1/2, 0.3, 1`
+    document.getElementById("example").innerHTML = `Ví dụ đầu vào : 1/2, 0.3, 1`
+}
+else if(window.location.href.includes("po")){
+    document.getElementById("example").innerHTML = `Exemplo de entrada : 1/2, 0.3, 1`
 }
 
 document.querySelectorAll(".matrixClass input").addEventListener("click", function(event){

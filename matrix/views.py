@@ -40,3 +40,8 @@ def indexVi(request):
     return render(request, "matrix/indexVi.html") 
 def inverseVi(request):
     return render(request, "matrix/inverseVi.html") 
+
+def indexPo(request):
+    return render(request, "matrix/indexPo.html") 
+def inversePo(request):
+    return render(request, "matrix/inversePo.html")
