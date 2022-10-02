@@ -214,6 +214,9 @@ const inverse = () => {
         else if(window.location.href.includes("po")){
             document.getElementById('inverse').innerHTML="Resultado : Não existe!"
         }
+        else if(window.location.href.includes("in")){
+            document.getElementById('inverse').innerHTML="Result : Tidak ada!"
+        }
     }
     
     else{
@@ -478,6 +481,9 @@ else if(window.location.href.includes("vi")){
 }
 else if(window.location.href.includes("po")){
     document.getElementById("example").innerHTML = `Exemplo de entrada : 1/2, 0.3, 1`
+}
+else if(window.location.href.includes("in")){
+    document.getElementById("example").innerHTML = `Contoh masukan : 1/2, 0.3, 1`
 }
 
 document.querySelectorAll(".matrixClass input").addEventListener("click", function(event){

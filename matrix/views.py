@@ -45,3 +45,8 @@ def indexPo(request):
     return render(request, "matrix/indexPo.html") 
 def inversePo(request):
     return render(request, "matrix/inversePo.html")
+
+def indexIn(request):
+    return render(request, "matrix/indexIn.html") 
+def inverseIn(request):
+    return render(request, "matrix/inverseIn.html")
