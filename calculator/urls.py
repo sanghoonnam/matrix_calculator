@@ -40,4 +40,6 @@ urlpatterns = [
     path("po/inverse",matrix.views.inversePo, name="inversePo"),
     path("in",matrix.views.indexIn, name="indexIn"),
     path("in/inverse",matrix.views.inverseIn, name="inverseIn"),
+    path("ru",matrix.views.indexRu, name="indexRu"),
+    path("ru/inverse",matrix.views.inverseRu, name="inverseRu"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -50,3 +50,8 @@ def indexIn(request):
     return render(request, "matrix/indexIn.html") 
 def inverseIn(request):
     return render(request, "matrix/inverseIn.html")
+
+def indexRu(request):
+    return render(request, "matrix/indexRu.html") 
+def inverseRu(request):
+    return render(request, "matrix/inverseRu.html")

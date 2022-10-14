@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Calculadora de matriz inversa</title>
-    <meta name="description" content="Utilice la calculadora de matriz inversa para encontrar matrices inversas de 3x3, 4x4, nxn fácil y rápidamente."/>
+    <title>Калькулятор обратной матрицы</title>
+    <meta name="description" content="Используйте калькулятор обратной матрицы, чтобы легко и быстро найти обратные матрицы 3x3, 4x4, nxn."/>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK9NHJW4W9"></script>
     <script>
@@ -30,17 +30,17 @@
 </head>
   <body>
     <div class="head">
-      <a href="/sp"><img class="logo" src="/static/matrix/image/calculator-logo.png"/></a>
+      <a href="/ru"><img class="logo" src="/static/matrix/image/calculator-logo.png"/></a>
       <select class="lang" onchange="window.location.href=this.value">
         <option value="/ko/inverse">한국어</option>
         <option value="/en/inverse">English</option>
         <option value="/ja/inverse">日本語</option>
         <option value="/ch/inverse">简体中文</option>
-        <option value="/sp/inverse" selected>Español</option>
+        <option value="/sp/inverse">Español</option>
         <option value="/vi/inverse">Tiếng Việt</option>
         <option value="/po/inverse">Português</option>
         <option value="/in/inverse">Indonesia</option>
-        <option value="/ru/inverse">Русский</option>
+        <option value="/ru/inverse" selected>Русский</option>
       </select>      
     </div>
     <ins id="first" class="kakao_ad_area" style="display:none;" 
@@ -49,10 +49,10 @@
  data-ad-height  = "50"></ins> 
 <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
     <div id="title-lang">
-    <h1>Calculadora de matriz inversa</h1>
+    <h1>Калькулятор обратной матрицы</h1>
     </div>
     <div id="size">
-    <h2>Tamaño de la matriz</h2>
+    <h2>Размер матрицы</h2>
     <input type="text" id="inputNumber" onkeyup="makeMatrix()" value="3">
     </div>
     <div>
@@ -78,11 +78,11 @@
         </div>
     </div>
     <div id="det">
-    <button onclick="det(); inverse();" id="detButton">Calcular</button>
+    <button onclick="det(); inverse();" id="detButton">Рассчитать</button>
     </div>
     <div id="result">
-      <p id="detValue">Determinante : </p>
-      <p id="inverse">Matriz inversa : </p>
+      <p id="detValue">определитель : </p>
+      <p id="inverse">Результат : </p>
     </div>
     <ins id="last" class="kakao_ad_area" style="display:none;" 
  data-ad-unit    = "DAN-xQjLxyaJavjV4drW" 
