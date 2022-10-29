@@ -89,6 +89,7 @@ const makeMatrix = () => {
 
     for(let i=0;i<val;i++){
         let mat = document.getElementById("matrix-1");
+            mat.setAttribute("onkeydown","Arrow()")
             let matdiv = document.createElement("div")
             matdiv.setAttribute("class","matrixClass")
             mat.appendChild(matdiv);
@@ -110,45 +111,51 @@ else if(val<=1){
 }
 
 const det = () =>{
-    let val = document.getElementById("inputNumber").value;
-    let detString = document.getElementById("detValue").innerHTML;
-    detString = detString.split(":")[0];
-    document.getElementById("detValue").innerHTML = detString + ": ";
-    val = parseInt(val);
-    let detMatrix = create2DArray(val,val);
-    for(let i=0;i<val;i++){
-        for(let j=0;j<val;j++){
-            detMatrix[i][j] = fraction(document.getElementById(`${i}-${j}`).value)
+    try{
+        let val = document.getElementById("inputNumber").value;
+        let detString = document.getElementById("detValue").innerHTML;
+        detString = detString.split(":")[0];
+        document.getElementById("detValue").innerHTML = detString + ": ";
+        val = parseInt(val);
+        let detMatrix = create2DArray(val,val);
+        for(let i=0;i<val;i++){
+            for(let j=0;j<val;j++){
+                detMatrix[i][j] = fraction(document.getElementById(`${i}-${j}`).value)
+            }
         }
-    }
-    if(detCalc(detMatrix)[1] === 1){
-        document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+`${detCalc(detMatrix)[0]}`
-    }
-    else if(detCalc(detMatrix)[1] === -1){
-        document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+`${detCalc(detMatrix)[0]*Math.pow(-1,1)}`
-    }
-    else if(detCalc(detMatrix)[0] === 0){
-        document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+`0`
-    }
-    else{
-        let g = gcd(detCalc(detMatrix)[0],detCalc(detMatrix)[1]);
-       
-        let a = detCalc(detMatrix)[0]/g;
-        let b = detCalc(detMatrix)[1]/parseInt(g);
-
-
-        if(b<0){
-            a = a*Math.pow(-1,1);
-            b = b*Math.pow(-1,1);
+        if(detCalc(detMatrix)[1] === 1){
+            document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+`${detCalc(detMatrix)[0]}`
         }
-        if(a%b===0){
-            document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+ a/b;
+        else if(detCalc(detMatrix)[1] === -1){
+            document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+`${detCalc(detMatrix)[0]*Math.pow(-1,1)}`
+        }
+        else if(detCalc(detMatrix)[0] === 0){
+            document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+`0`
         }
         else{
-            let fracExpress = "$\\frac{"+`${a}`+"}{"+`${b}`+"}$"
-        document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML + fracExpress;
-        MathJax.Hub.Queue(["Typeset",MathJax.Hub,"detValue"]);
+            let g = gcd(detCalc(detMatrix)[0],detCalc(detMatrix)[1]);
+        
+            let a = detCalc(detMatrix)[0]/g;
+            let b = detCalc(detMatrix)[1]/parseInt(g);
+
+
+            if(b<0){
+                a = a*Math.pow(-1,1);
+                b = b*Math.pow(-1,1);
+            }
+            if(a%b===0){
+                document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML+ a/b;
+            }
+            else{
+                let fracExpress = "$\\frac{"+`${a}`+"}{"+`${b}`+"}$"
+            document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML + fracExpress;
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub,"detValue"]);
+            }
         }
+    }
+    catch{
+        document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML + "Error";
+        document.getElementById("inverse").innerHTML = document.getElementById("inverse").innerHTML.split(":")[0] + ": Error";
     }
 }
 
@@ -267,19 +274,6 @@ const inverse = () => {
 }
 }
 
-// const transpose = (arr) => {
-//     let len = arr[0].length
-//     let flag = 0;
-//     for(let i=1;i<len;i++){
-//         for(let j=0;j<i;j++){
-//             flag = arr[i][j];
-//             arr[i][j] = arr[j][i];
-//             arr[j][i] = flag;
-//         }
-//     }
-//     return arr
-// }
-
 const gauss = (arra) => {
     let len = arra[0].length;
     let ideal = create2DArray(len,len);
@@ -298,8 +292,6 @@ const gauss = (arra) => {
         if(parseInt(arra[i][i][0])!==0){
             conti1 = ideal[i].map(m=> fracDiv(m,arra[i][i]));
             conta1 = arra[i].map(m=> fracDiv(m,arra[i][i]));
-            // console.log(conti1)
-            // console.log(conta1)
             for(let k=0;k<len;k++){
                 ideal[i][k] = conti1[k]
                 arra[i][k] = conta1[k] 
@@ -332,8 +324,6 @@ const gauss = (arra) => {
             if(p !== i && parseInt(arra[p][i][0]) !== 0){
                 conti = ideal[p].map((m,index) => {return fracSub(m, fracMul(arra[p][i],ideal[i][index]))})
                 conta = arra[p].map((m,index) => {return fracSub(m,fracMul(arra[p][i],arra[i][index]))})
-                // console.log(conti)
-                // console.log(conta)
                 for(let k=0;k<len;k++){
                     ideal[p][k] = conti[k];
                     arra[p][k] = conta[k];
@@ -365,100 +355,6 @@ const gauss = (arra) => {
 }
 
 
-
-// const inverseCalc = (arr) => {
-//     const len = arr[0].length
-//     const matrix = create2DArray(len,len)
-//     if(len>=3 && detCalc(arr)!==0){
-//     for(let i=0;i<len;i++){
-//         for(let j=0;j<len;j++){
-//         let section = create2DArray(len-1,len-1)
-//         if(i === 0 && j===0){
-//             section = arr.slice(1,len).map(m => m.slice(1,len));
-//         }
-//         else if(i === 0 && j === len-1){
-//             section = arr.slice(1,len).map(m => m.slice(0,len-1));
-//         }
-//         else if(i === 0){
-//             section = arr.slice(1,len).map(m => [].concat(m.slice(0,j),m.slice(j+1,len)));
-//         }
-//         else if(i === len-1 && j === 0){
-//             section = arr.slice(0,len-1).map(m => m.slice(1,len));
-//         }
-//         else if(i === len-1 && j === len-1){
-//             section = arr.slice(0,len-1).map(m => m.slice(0,len-1));
-//         }
-//         else if(i === len-1){
-//             section = arr.slice(0,len-1).map(m => [].concat(m.slice(0,j),m.slice(j+1,len)));
-//         }
-//         else if(i !== len-1 && i !== 0 && j === 0){
-//             for(let m=0;m<len;m++){
-//                 for(let n=0;n<len-1;n++){
-//                     if(m<i){
-//                         section[m][n] = arr.slice(0,i).map(p => p.slice(1,len))[m][n]
-//                     }
-//                     else if(m>i){
-//                         section[m-1][n] = arr.map(p => p.slice(1,len))[m][n]
-//                     }
-//                 }
-//             }
-//         }
-//         else if(i !== len-1 && i !== 0 && j === len-1){
-//             for(let m=0;m<len;m++){
-//                 for(let n=0;n<len-1;n++){
-//                     if(m<i){
-//                         section[m][n] = arr[m][n]
-//                     }
-//                     else if(m>i){
-//                         section[m-1][n] = arr[m][n]
-//                     }
-//                 }
-//             }
-//         }
-//         else{
-//             for(let m=0;m<len;m++){
-//                 for(let n=0;n<len;n++){
-//                     if(m<i && n<j){
-//                         section[m][n] = arr[m][n]
-//                     }
-//                     else if(m<i && n>j){
-//                         section[m][n-1] = arr[m][n]
-//                     }
-//                     else if(m>i && n<j){
-//                         section[m-1][n] = arr[m][n]
-//                     }
-//                     else if(m>i && n>j){
-//                         section[m-1][n-1] = arr[m][n]
-//                     }
-//                 }
-//             }
-//         }
-//         if(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]!==0){
-//             let k = gcd(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1],detCalc(section)[1]*detCalc(arr)[0])
-//             matrix[i][j] = [parseInt(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]/k),parseInt(detCalc(section)[1]*detCalc(arr)[0]/k)]
-//         }
-//         else if(detCalc(section)[0]*Math.pow(-1,i+j)*detCalc(arr)[1]===0){
-//             matrix[i][j] = [0,1]
-//         }
-       
-//         if(matrix[i][j][1]<0){
-//             matrix[i][j][0] = matrix[i][j][0]*Math.pow(-1,1)
-//             matrix[i][j][1] = matrix[i][j][1]*Math.pow(-1,1)
-//         }
-//     }
-//     }
-//     return transpose(matrix)
-//     }
-//     else if(len === 2 && detCalc(arr)!==0){
-//         matrix[0][0] = [arr[1][1][0]*detCalc(arr)[1],arr[1][1][1]*detCalc(arr)[0]]
-//         matrix[1][1] = [arr[0][0][0]*detCalc(arr)[1],arr[0][0][1]*detCalc(arr)[0]]
-//         matrix[0][1] = [arr[1][0][0]*Math.pow(-1,1)*detCalc(arr)[1],arr[1][0][1]*detCalc(arr)[0]]
-//         matrix[1][0] = [arr[0][1][0]*Math.pow(-1,1)*detCalc(arr)[1],arr[0][1][1]*detCalc(arr)[0]]
-//         return matrix
-//     }
-// }
-
-
 if(window.location.href.includes("en")){
     document.getElementById("example").innerHTML = `Input example : 1/2, 0.3, 1`
 }
@@ -486,6 +382,51 @@ else if(window.location.href.includes("in")){
     document.getElementById("example").innerHTML = `Contoh masukan : 1/2, 0.3, 1`
 }
 
-document.querySelectorAll(".matrixClass input").addEventListener("click", function(event){
+
+
+
+document.getElementById("matrix-1").addEventListener("click", function(event){
 event.preventDefault();
 })
+
+const Arrow = () => {
+    let length = document.getElementById("inputNumber").value;
+    if(event.key === "ArrowRight"){
+        let a = parseInt(document.activeElement.id.split("-")[0]);
+        let b = parseInt(document.activeElement.id.split("-")[1]);
+        if(b == length - 1 && a !== length-1){
+            document.getElementById(`${a+1}-${0}`).focus()
+        }
+        else if (b != length-1){
+            document.getElementById(`${a}-${b+1}`).focus()
+        }
+    }
+    else if(event.key === "ArrowLeft"){
+        let a = parseInt(document.activeElement.id.split("-")[0]);
+        let b = parseInt(document.activeElement.id.split("-")[1]);
+        if(b == 0 && a !== 0){
+            document.getElementById(`${a-1}-${length-1}`).focus()
+        }
+        else if(b!==0){
+            document.getElementById(`${a}-${b-1}`).focus()
+        }
+    }
+    else if(event.key === "ArrowUp"){
+        let a = parseInt(document.activeElement.id.split("-")[0]);
+        let b = parseInt(document.activeElement.id.split("-")[1]);
+        if(a !== 0){
+          document.getElementById(`${a-1}-${b}`).focus()
+        }
+    }
+    else if(event.key === "ArrowDown"){
+        let a = parseInt(document.activeElement.id.split("-")[0]);
+        let b = parseInt(document.activeElement.id.split("-")[1]);
+        if(a!==length-1){
+            document.getElementById(`${a+1}-${b}`).focus()
+        }
+        
+    }
+    else if(event.key === "Enter"){
+        document.getElementById("detButton").onclick()
+    }
+}

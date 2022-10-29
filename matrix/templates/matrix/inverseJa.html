@@ -59,7 +59,7 @@
       <p id="example"></p>
     </div>
     <div id="matrix">
-        <div id="matrix-1">
+        <div id="matrix-1" onkeydown="Arrow()">
             <div class="matrixClass">
                 <input id="0-0">
                 <input id="0-1">
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div id="det">
-    <button onclick="det(); inverse();" id="detButton">計算</button>
+    <button onclick="det(); inverse();" id="detButton">逆行列を求める</button>
     </div>
     <div id="result">
       <p id="detValue">行列式 : </p>
