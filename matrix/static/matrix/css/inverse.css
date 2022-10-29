@@ -184,12 +184,6 @@ body h1{
     body{
         height:575px;
     }
-    .matrix-1{
-        position:absolute;
-        left:50%;
-        top:200px;
-        transform: translate(-50%,0);
-    }
      
 }
 
