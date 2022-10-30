@@ -207,7 +207,7 @@ const inverse = () => {
         document.getElementById('inverse').innerHTML="역행렬 : 없습니다!"
         }
         else if(window.location.href.includes("ja")){
-            document.getElementById('inverse').innerHTML="逆行列 : 存在しない!"
+            document.getElementById('inverse').innerHTML="逆 行列 : 存在しない!"
         }
         else if(window.location.href.includes("ch")){
             document.getElementById('inverse').innerHTML="逆矩阵 : 不存在！"
@@ -222,7 +222,7 @@ const inverse = () => {
             document.getElementById('inverse').innerHTML="Resultado : Não existe!"
         }
         else if(window.location.href.includes("in")){
-            document.getElementById('inverse').innerHTML="Result : Tidak ada!"
+            document.getElementById('inverse').innerHTML="Hasil : Tidak ada!"
         }
     }
     
