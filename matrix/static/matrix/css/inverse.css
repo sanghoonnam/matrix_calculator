@@ -195,11 +195,11 @@ body h1{
     left:0%;
     }
     body{
-        height:1000px;
+        height:800px;
     }
     #last{
         position: absolute;
-        top:105vh;
+        top:800px;
         left:0%; 
         margin:0;
         padding:0;
