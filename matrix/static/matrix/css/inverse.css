@@ -187,11 +187,6 @@ body h1{
 
 @media screen and (max-height:575px) {
     
-    #first{
-        position: absolute;
-    top:0%;
-    left:0%;
-    }
     body{
         height:800px;
     }
