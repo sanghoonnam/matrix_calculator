@@ -216,7 +216,7 @@ const inverse = () => {
             document.getElementById('inverse').innerHTML="Matriz inversa : ¡No existe!"
         }
         else if(window.location.href.includes("vi")){
-            document.getElementById('inverse').innerHTML="Result : Không tồn tại!"
+            document.getElementById('inverse').innerHTML="Kết quả : Không tồn tại!"
         }
         else if(window.location.href.includes("po")){
             document.getElementById('inverse').innerHTML="Resultado : Não existe!"
