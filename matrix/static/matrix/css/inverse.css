@@ -91,14 +91,17 @@ body h1{
     top:70.3px;
     left:0%;
 }
-
-#last{
+#second{
     position: absolute;
-    top:110vh;
-    left:0%; 
-    margin:0;
-    padding:0;
+    top:120.3px;
+    left:0%;
 }
+#third{
+    position: absolute;
+    top:170.3px;
+    left:0%;
+}
+
 .head{
     display:flex;
     justify-content: space-between;

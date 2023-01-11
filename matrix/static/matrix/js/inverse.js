@@ -155,7 +155,6 @@ const det = () =>{
     }
     catch{
         document.getElementById("detValue").innerHTML = document.getElementById("detValue").innerHTML + "Error";
-        document.getElementById("inverse").innerHTML = document.getElementById("inverse").innerHTML.split(":")[0] + ": Error";
     }
 }
 
@@ -185,6 +184,7 @@ const detCalc = (arr) => {
 
 
 const inverse = () => {
+    try{
     let val = document.getElementById("inputNumber").value;
     val = parseInt(val);
     let jaxString = document.getElementById('inverse').innerHTML+"$\\begin{pmatrix}";
@@ -271,7 +271,12 @@ const inverse = () => {
     let jaxJax = jaxString + "\\end{pmatrix}$";
     document.getElementById('inverse').innerHTML = jaxJax;
     MathJax.Hub.Queue(["Typeset",MathJax.Hub,"inverse"]);
+
 }
+    }
+    catch{
+        document.getElementById("inverse").innerHTML = document.getElementById("inverse").innerHTML.split(":")[0] + ": Error";
+    }
 }
 
 const gauss = (arra) => {
