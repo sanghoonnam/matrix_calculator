@@ -62,26 +62,31 @@ body{
 
 #det button{
     margin-top:10px;
-    color: #000000;
+    color: white;
     border-color: #000000;
+    background-color: #000000;
+    /* border-color:white; */
     cursor: pointer;    
-    background-color: transparent;
+    /* background-color: transparent;  */
     border: 1px solid;
     line-height: 1.5;
     border-radius: 3px;
     /* padding: 5.625px 11.25px; */
     font-size: 12px;
     font-weight: 500;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out; 
 }
 
 #det button:hover{
-    color:white;
+    /* color:white;
     background-color: #000000;
-    border-color:white;
+    border-color:white; */
+    color: black;
+    border-color: white;
+    background-color: white;
 }
 #det{
-    z-index:50;
+    z-index:2;
 }
 
 body h1{
