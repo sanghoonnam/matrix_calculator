@@ -80,6 +80,9 @@ body{
     background-color: #000000;
     border-color:white;
 }
+#det{
+    z-index:50;
+}
 
 body h1{
     margin:0px;
@@ -92,9 +95,11 @@ body h1{
     left:0%;
 }
 #second{
-    position: absolute;
+    /* position: absolute;
     top:120.3px;
-    left:0%;
+    left:0%; */
+    position:relative;
+    top:-30px;
 }
 #third{
     position: absolute;
