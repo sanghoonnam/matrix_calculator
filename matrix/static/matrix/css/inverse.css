@@ -60,6 +60,46 @@ body{
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+.arrow {
+    border: solid black;
+    border-width: 0 6px 6px 0;
+    display: inline-block;
+    padding: 6px;
+    cursor: pointer;
+    background-color: transparent; 
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out; 
+    position:relative;
+    top:3px;
+}
+
+.arrow:hover{
+    color: #808080;
+    /* background-color: #000000; */
+    border-color:#D3D3D3;
+}
+  
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    position:relative;
+    left:5px;
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    position:relative;
+    right:5px;
+  }
+  
+
+#title-lang{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+align-items: center;
+}
+
 #det button{
     margin-top:10px;
     color: black;
