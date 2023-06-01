@@ -27,7 +27,7 @@ def inverseRu(request):
     return render(request, "matrix/inverseRu.html")
 
 def indexEn(request):
-    return render(request, "matrix/indexEn.html")
+    return render(request, "matrix/index.html")
 def indexKo(request):
     return render(request, "matrix/indexKo.html")
 def indexJa(request):
