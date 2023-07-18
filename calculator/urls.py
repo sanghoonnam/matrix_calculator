@@ -24,6 +24,7 @@ from django.contrib.sitemaps.views import sitemap
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("",matrix.views.index,name="index"),
+    path("ko/prime",matrix.views.primeKo, name="primeKo"),
     path("en/inverse",matrix.views.inverseEn, name="inverseEn"),
     path("ko/inverse",matrix.views.inverseKo,name="inverseKo"),
     path("ja/inverse",matrix.views.inverseJa, name="inverseJa"),

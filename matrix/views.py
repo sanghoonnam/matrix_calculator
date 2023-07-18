@@ -64,3 +64,7 @@ def deterIn(request):
     return render(request, "matrix/deterIn.html") 
 def deterRu(request):
     return render(request, "matrix/deterRu.html")
+
+
+def primeKo(request):
+    return render(request, "matrix/primeKo.html")

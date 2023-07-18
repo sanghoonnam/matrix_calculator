@@ -420,7 +420,7 @@ const Arrow = () => {
         let a = parseInt(document.activeElement.id.split("-")[0]);
         let b = parseInt(document.activeElement.id.split("-")[1]);
         if(a !== 0){
-          document.getElementById(`${a-1}-${b}`).focus()
+            document.getElementById(`${a-1}-${b}`).focus()
         }
     }
     else if(event.key === "ArrowDown"){
