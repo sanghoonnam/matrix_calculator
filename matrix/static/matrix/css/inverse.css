@@ -1,9 +1,16 @@
 #title-lang{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
 padding-top:125px;
+display:flex;
+    flex-direction:row;
+    justify-content: center;
+align-items: center;
+}
+
+#title-lang-prime{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+align-items: center;
 }
 
 #lang{
@@ -93,14 +100,7 @@ body{
   }
   
 
-#title-lang{
-    display:flex;
-    flex-direction:row;
-    justify-content: center;
-align-items: center;
-}
-
-#det button{
+#detButton{
     margin-top:0px;
     color: black;
     border-color: white;
@@ -117,7 +117,7 @@ align-items: center;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out; 
 }
 
-#det button:hover{
+#detButton:hover{
     color:white;
     background-color: #000000;
     border-color:white;
@@ -253,4 +253,12 @@ body h1{
 
 #inputPrime{
 width:300px;
+}
+
+#prime-exp{
+  width : 500px;
+  height: 170px;
+  border: 1px solid black;
+  padding:5px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
