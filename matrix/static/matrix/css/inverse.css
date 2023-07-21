@@ -235,6 +235,17 @@ body h1{
     margin:0;
     padding-top:5px;
 }
+#inputPrime{
+    width:300px;
+    }
+    
+#prime-exp{
+    width : 500px;
+    height: 170px;
+    border: 1px solid black;
+    padding:5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
 
 @media screen and (max-height:575px) {
     
@@ -248,17 +259,20 @@ body h1{
         margin:0;
         padding:0;
     } 
+    #prime-exp{
+        font-size: 5px;
+    }
 }
 
-
-#inputPrime{
-width:300px;
-}
-
-#prime-exp{
-  width : 500px;
-  height: 170px;
-  border: 1px solid black;
-  padding:5px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+@media screen and (max-width:575px){
+    #prime-exp{
+        width:350px;
+        height:119px;
+        padding:3.5px;
+        box-shadow: 0 7px 14px rgba(0,0,0,0.19), 0 4.2px 4.2px rgba(0,0,0,0.23);
+        font-size:11px;
+    }
+    #inputPrime{
+        width:210px;
+    }
 }
