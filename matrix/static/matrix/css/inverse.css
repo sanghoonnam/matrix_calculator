@@ -112,9 +112,9 @@ body{
     line-height: 1.5;
     border-radius: 3px;
     /* padding: 5.625px 11.25px; */
-    font-size: 12px;
+    /* font-size: 12px; */
     font-weight: 500;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out; 
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 #detButton:hover{
@@ -237,8 +237,13 @@ body h1{
 }
 #inputPrime{
     width:300px;
-    }
-    
+    height:18px;
+}
+
+.button{
+    height:20px!important;
+}
+
 #prime-exp{
     width : 500px;
     height: 170px;
@@ -246,7 +251,9 @@ body h1{
     padding:5px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     }
-
+.primedetButton{
+    font-size:13.5px;
+}
 @media screen and (max-height:575px) {
     
     body{
