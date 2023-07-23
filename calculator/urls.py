@@ -25,6 +25,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("",matrix.views.index,name="index"),
     path("ko/prime",matrix.views.primeKo, name="primeKo"),
+    path("ko/factor",matrix.views.factorKo, name="factorKo"),
     path("en/inverse",matrix.views.inverseEn, name="inverseEn"),
     path("ko/inverse",matrix.views.inverseKo,name="inverseKo"),
     path("ja/inverse",matrix.views.inverseJa, name="inverseJa"),

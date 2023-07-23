@@ -68,3 +68,6 @@ def deterRu(request):
 
 def primeKo(request):
     return render(request, "matrix/primeKo.html")
+
+def factorKo(request):
+    return render(request, "matrix/factorKo.html")

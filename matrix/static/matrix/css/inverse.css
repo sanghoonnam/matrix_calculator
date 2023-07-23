@@ -285,3 +285,8 @@ body h1{
         width:210px;
     }
 }
+
+#factorResult span{
+    margin:0;
+    font-size:16px;
+}
