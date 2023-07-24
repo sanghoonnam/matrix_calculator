@@ -278,15 +278,19 @@ body h1{
 }
 
 @media screen and (max-width:575px){
-    #prime-exp{
+    .explain{
         width:350px;
         height:119px;
         padding:3.5px;
         box-shadow: 0 7px 14px rgba(0,0,0,0.19), 0 4.2px 4.2px rgba(0,0,0,0.23);
         font-size:11px;
     }
-    #inputPrime{
+    #inputPrime, #inputFactor{
         width:210px;
+    }
+
+    #inverse-exp{
+        height:133px;
     }
 }
 
