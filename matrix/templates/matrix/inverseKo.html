@@ -90,6 +90,12 @@ data-ad-height = "50"></ins>
       {% comment %} <p id="detValue">행렬식 : </p> {% endcomment %}
       <p id="inverse">역행렬 : </p>
     </div>
+    <div class="explain" id="inverse-exp">
+      역행렬은 정사각 행렬에 대해서만 정의되며 원래 행렬과의 곱이 곱의 순서와 관계없이 항등행렬이 되도록 하는 행렬로 정의합니다. <br>
+      역행렬은 유일하다는 사실이 잘 알려져 있고, 역행렬을 구하는 방식은 크게 2가지 정도 있습니다. 첫 번째는, cofactor라는 것을 정의하여 cramer's rule에 의거하여 구하는 방법이 있습니다.
+      두 번째는, gauss-jordan 소거법을 활용하는 방법이 있습니다. <br>
+      현재 우리의 계산기는 두 번째 방법에 의거하여 만들어졌으며 첫 번째 방법에 비해 연산 수를 획기적으로 줄일 수 있는 점이 장점입니다.
+    </div>
 <script src="/static/matrix/js/inverse.js"></script>
   </body>
 </html>

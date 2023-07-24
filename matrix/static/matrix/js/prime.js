@@ -71,9 +71,9 @@ const factorize = () => {
             if(num % (i+1)==0){
                 sum+=1
                 fake = num
-                exp=-1
+                exp=0
                 arr1.push(i+1)
-                while(fake == parseInt(fake)){
+                while(fake % (i+1)==0){
                     fake = fake/(i+1)
                     exp+=1
                 }
@@ -88,18 +88,19 @@ const factorize = () => {
         }
     }
 }
-    
     findPrime(prime)
+    console.log(arr1)
+    console.log(arr2)
     let Jax="${"
     for(let i=0;i<arr1.length;i++){
         if(i!=arr1.length-1 && arr2[i]!=1){
-        Jax+=`${arr1[i]}^${arr2[i]}`+"\\times"
+        Jax+=`${arr1[i]}^{${arr2[i]}}`+"\\times"
         }
         else if(i!=arr1.length-1 && arr2[i]==1){
             Jax+=`${arr1[i]}`+"\\times"
             }
         else if(i==arr1.length-1 && arr2[i]!=1){
-            Jax+=`${arr1[i]}^${arr2[i]}`
+            Jax+=`${arr1[i]}^{${arr2[i]}}`
         }
         else{
             Jax+=`${arr1[i]}`

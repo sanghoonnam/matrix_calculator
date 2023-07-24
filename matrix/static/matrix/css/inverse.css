@@ -235,7 +235,7 @@ body h1{
     margin:0;
     padding-top:5px;
 }
-#inputPrime{
+#inputPrime, #inputFactor{
     width:300px;
     height:20px;
 }
@@ -245,14 +245,18 @@ body h1{
     justify-content: center;
 }
 
-#prime-exp{
+.explain{
     width : 500px;
     height: 170px;
     border: 1px solid black;
     padding:5px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     }
-.primedetButton{
+
+#inverse-exp{
+    height:190px;    
+    }    
+.detButton{
     font-size:13.5px;
     margin-left: 5px;
 }
@@ -268,7 +272,7 @@ body h1{
         margin:0;
         padding:0;
     } 
-    #prime-exp{
+    .explain{
         font-size: 5px;
     }
 }
