@@ -298,11 +298,11 @@ body h1{
         border-color: #007bff;
         cursor: pointer;    
         background-color: transparent;
-        border: 0.4px solid;
-        line-height: 0.6;
-        border-radius: 0.1rem;
-        padding: 0.15rem 0.3rem;
-        font-size: 0.4rem;
+        border: 0.7px solid;
+        line-height: 1.05;
+        border-radius: 0.175rem;
+        padding: 0.2625rem 0.525rem;
+        font-size: 0.7rem;
         transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     }
     
