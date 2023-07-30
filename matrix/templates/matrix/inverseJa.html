@@ -52,7 +52,7 @@
     </div>
     <div id="size">
     <h2>行列サイズ</h2>
-    <input type="text" id="inputNumber" onkeyup="makeMatrix()" value="3">
+    <input type="number" pattern="\d*" id="inputNumber" onkeyup="makeMatrix()" value="3">
     </div>
     <div>
       <p id="example"></p>
@@ -60,19 +60,19 @@
     <div id="matrix">
         <div id="matrix-1" onkeydown="Arrow()">
             <div class="matrixClass">
-                <input type="number" pattern="\d*" id="0-0">
-                <input type="number" pattern="\d*" id="0-1">
-                <input type="number" pattern="\d*" id="0-2">
+                <input id="0-0">
+                <input id="0-1">
+                <input id="0-2">
             </div>
             <div class="matrixClass">
-                <input type="number" pattern="\d*" id="1-0">
-                <input type="number" pattern="\d*" id="1-1">
-                <input type="number" pattern="\d*" id="1-2">
+                <input id="1-0">
+                <input id="1-1">
+                <input id="1-2">
             </div>
             <div class="matrixClass">
-                <input type="number" pattern="\d*" id="2-0">
-                <input type="number" pattern="\d*" id="2-1">
-                <input type="number" pattern="\d*" id="2-2">
+                <input id="2-0">
+                <input id="2-1">
+                <input id="2-2">
             </div>
         </div>
     </div>
