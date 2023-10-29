@@ -84,6 +84,12 @@
       {% comment %} <p id="detValue">Determinant : </p> {% endcomment %}
       <p id="inverse">Result : </p>
     </div>
+    <div class="explain exp-en" id="inverse-exp">
+      An inverse matrix is defined only for square matrices and is defined as a matrix whose product with the original matrix results in an identity matrix, regardless of the order of the product. <br>
+It is well known that inverse matrices are unique, and there are two main ways to find them. <br>
+The first is to define a cofactor and use cramer's rule to find it. The second is to utilize the gauss-jordan elimination method. <br>
+Our current calculator is based on the second method, which has the advantage of dramatically reducing the number of operations compared to the first method.
+    </div>
 <script src="/static/matrix/js/inverse.js"></script>
   </body>
 </html>
